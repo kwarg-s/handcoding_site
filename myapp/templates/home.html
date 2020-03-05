@@ -4,3 +4,12 @@
 </p>
 
 
+{% for screen in screens.all %}
+    <h1>{{screen.title}}</h1>
+    <p>
+    <img src="{{ profile.photo.url }}" alt="실패">
+    </p>
+{%endfor%}
+
+
+<p>끝임</p>
