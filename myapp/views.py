@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Screen
 from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def home(request):
-    screens=Screen.objects
-    return render(request, 'home.html',{'screens':screens})
+    screen_id=1
+    screen_detail=get_object_or_404(Screen,pk=screen_id)
+    next_screen_id=screen_id+1
+    before_screen_id=screen_id-1
+    return render(request,'new.html',{'screen':screen_detail,'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
+
 
 def create(request):
   # 생략
@@ -18,7 +22,9 @@ def detail(request,screen_id):
   screen_detail=get_object_or_404(Screen,pk=screen_id)
   next_screen_id=screen_id+1
   before_screen_id=screen_id-1
-  try:
-    return render(request,'new.html',{'screen':screen_detail,'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
-  except:
-    return render(request, 'home.html',{'screens':screens})
+  return render(request,'new.html',{'screen':screen_detail,'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
+
+def update(request,screen_id):
+  print(request.POST['choice'])
+  next_screen_id=screen_id+1
+  return redirect('/screen/'+str(screen_id))

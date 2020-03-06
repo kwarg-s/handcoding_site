@@ -19,7 +19,8 @@ import myapp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',myapp.views.home,name='home'),
-    path('screen/<int:screen_id>/',myapp.views.detail, name='detail')
+    path('screen/<int:screen_id>/',myapp.views.detail, name='detail'),
+    path('screen/<int:screen_id>/update',myapp.views.update,name='update'),
 ]
 
 ###
