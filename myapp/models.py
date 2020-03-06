@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Screen(models.Model):
     title=models.CharField(max_length=200)
+    screen_id=models.IntegerField( primary_key=True)
     pic=models.ImageField(upload_to="image")
     gaming=models.IntegerField(default=0)
 
