@@ -1,3 +1,7 @@
+
+
+
+<!-- ################ -->
 <h1>Hello World</h1>
 <p>
 
@@ -19,6 +23,17 @@
     {% csrf_token %}
     <label for="gaming_type">Enter gaming type: </label>
     <input id="gaming_type" type="text" name="gaming_type" value="Non gaming">
+    <br>
+
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-danger">
+            <input type="radio" name="gaming"  id="jb-radio-1" > Radio Button 1
+        </label>
+        <label class="btn btn-danger">
+            <input type="radio" name="non-gaming"  id="jb-radio-2"> Radio Button 2
+        </label>
+    </div>
+    <br>
 
     <!--아무나 이와같은 포스트를 할 수 없도록 하고 해당 토큰을 가지고있는 클라이언트만 포스트 할 수 있도록 함-->
     <button class="next_button" name="choice" value="{{screen.title}}">Next</button>
@@ -33,3 +48,55 @@
     <br>
 
 
+
+    
+
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Bootstrap 4</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+      <style>
+        p { margin:20px 0px; }
+        .btn-primary{
+          background-color:orange;
+        }
+
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            
+            
+
+
+            <p><strong>Radio Button</strong></p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-danger" >
+                <input type="radio" name="jb-radio" id="jb-radio-1"> 게이밍 액션
+              </label>
+              <label class="btn btn-danger">
+                <input type="radio" name="jb-radio" id="jb-radio-2"> 논-게이밍 액션
+              </label>
+            </div>
+
+            <p><strong>Checkbox</strong></p>
+            <div class="btn-group  btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-primary" >
+                <input type="checkbox" id="jb-radio-1"> Rapid Guessing
+              </label>
+              <label class="btn btn-primary" >
+              <input type="checkbox" id="jb-radio-2"> System Abuse
+              </label>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </body>

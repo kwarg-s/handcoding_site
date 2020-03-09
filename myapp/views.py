@@ -30,9 +30,19 @@ def detail(request,screen_id):
 def update(request,screen_id):
   try:
     #https://rednooby.tistory.com/90
-    print(request.POST['choice'])
-    print(request.POST['gaming_type'])
+    
+    post=request.POST
     screen=Screen.objects.get(pk=screen_id-1)
+
+    if 'gaming' in post.keys():
+      screen.gaming=1
+      screen.save()
+    else:
+      screen.gaming=0
+      screen.save()
+
+    print(request.POST)
+    
     screen.gaming_type=request.POST['gaming_type']
     screen.save()
     return redirect('/screen/'+str(screen_id))
