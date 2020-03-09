@@ -7,6 +7,8 @@ class Screen(models.Model):
     screen_id=models.IntegerField( primary_key=True)
     pic=models.ImageField(upload_to="image")
     gaming=models.IntegerField(default=0)
+    gaming_type=models.TextField(default="non gaming")
+
 
     def __str__(self):
         return self.title

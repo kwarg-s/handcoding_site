@@ -26,8 +26,15 @@ def detail(request,screen_id):
     return render(request,'new.html',{'screen':screen_detail,'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
   except:
     return render(request,'home.html')
-    
+
 def update(request,screen_id):
-  print(request.POST['choice'])
-  next_screen_id=screen_id+1
-  return redirect('/screen/'+str(screen_id))
+  try:
+    #https://rednooby.tistory.com/90
+    print(request.POST['choice'])
+    print(request.POST['gaming_type'])
+    screen=Screen.objects.get(pk=screen_id-1)
+    screen.gaming_type=request.POST['gaming_type']
+    screen.save()
+    return redirect('/screen/'+str(screen_id))
+  except:
+    return render(request,'home.html')
