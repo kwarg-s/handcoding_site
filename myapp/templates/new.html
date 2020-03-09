@@ -1,102 +1,263 @@
 
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>오픈 코딩 사이트</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="static/myapp/vendor/jquery/jquery.min.js"></script>
+  <script src="static/myapp/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="static/myapp/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="static/myapp/js/jqBootstrapValidation.js"></script>
+  <script src="static/myapp/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="static/myapp/js/freelancer.min.js"></script>
 
 
-<!-- ################ -->
-<h1>Hello World</h1>
-<p>
+   <!-- Custom fonts for this theme -->
+  <link href='{% static "myapp/vendor/fontawesome-free/css/all.min.css" %}' rel="stylesheet" type="text/css">
 
-</p>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <!-- Theme CSS -->
+    <link href="{% static 'myapp/css/freelancer.min.css' %}" rel="stylesheet">
 
-
-    <style>
-    .next_button{
-        width:200px;
-        height:100px;
-    }
-    </style>
+    <link rel="stylesheet" href="../static/myapp/mycss.css">
 
 
+</head>
 
-<form action = "/screen/{{next_screen_id}}/update" method="post">
-    <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
-    {% csrf_token %}
-    <label for="gaming_type">Enter gaming type: </label>
-    <input id="gaming_type" type="text" name="gaming_type" value="Non gaming">
-    <br>
+<body id="page-top" >
 
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-danger">
-            <input type="radio" name="gaming"  id="jb-radio-1" > Radio Button 1
-        </label>
-        <label class="btn btn-danger">
-            <input type="radio" name="non-gaming"  id="jb-radio-2"> Radio Button 2
-        </label>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top " style="background-color:cornflowerblue" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">오픈 코딩 사이트</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">메뉴1</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">메뉴2</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">메뉴3</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <br>
+  </nav>
 
-    <!--아무나 이와같은 포스트를 할 수 없도록 하고 해당 토큰을 가지고있는 클라이언트만 포스트 할 수 있도록 함-->
-    <button class="next_button" name="choice" value="{{screen.title}}">Next</button>
-</form>
-
-    <h1>{{screen.title}}</h1>
-    <p>
-    <img src="{{ screen.pic.url }}" style="width:50%;" >
-
-    </p>
-
-    <br>
-
-
-
+  <!-- Masthead
+  <header class="masthead  text-white text-center" style="color:black;">
     
+  </header> -->
 
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Bootstrap 4</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+      <div class="container d-flex align-items-center flex-column" style="color:black;">       
+        <img src="{{ screen.pic.url }}" style="width:60%;" >
+        <!-- <p class="masthead-subheading font-weight-light mb-0"> {{screen.title}}</p> -->
+      </div>
+
       <style>
+        .gaming_form{
+          width:33%; 
+          border: 1px solid; 
+          border-color:black; 
+          text-align:center;
+          left:33%;
+          position:relative;
+        }
         p { margin:20px 0px; }
         .btn-primary{
           background-color:orange;
         }
+        .btn-secondary:hover {
+          color: #fff;
+          background-color: indigo;
+          border-color: indigo;
+        }
+
+        .btn-secondary {
+        color: #fff;
+        background-color: cornflowerblue;
+        border-color: #2c3e50;
+      }
+
+      .btn-secondary:hover {
+        color: #fff;
+        background-color: black;
+        border-color: black;
+      }
+      .btn-danger {
+        color: #fff;
+        border-color: #2c3e50;
+      }
+      .btn-secondary:focus, .btn-secondary.focus {
+        box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+      }
+      .btn-danger:focus, .btn-danger.focus {
+  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+      }
+
+      .btn-danger.disabled, .btn-danger:disabled {
+        color: #fff;
+        background-color: #2c3e50;
+        border-color: #2c3e50;
+      }
+
+      .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
+      .show > .btn-danger.dropdown-toggle {
+        color: #fff;
+        background-color: #1a252f;
+        border-color: #151e27;
+      }
+
+      .btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus,
+      .show > .btn-danger.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+      }
+
 
       </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            
-            
 
+      <form action = "/screen/{{next_screen_id}}/update" method="post" class="gaming_form">
+      <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
+      {% csrf_token %}
 
-            <p><strong>Radio Button</strong></p>
+      <p><strong>게이밍 여부</strong></p>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-danger" >
-                <input type="radio" name="jb-radio" id="jb-radio-1"> 게이밍 액션
+              <label class="btn btn-secondary" >
+                <input type="radio" name="gaming" id="jb-radio-1"> 게이밍 액션
               </label>
               <label class="btn btn-danger">
-                <input type="radio" name="jb-radio" id="jb-radio-2"> 논-게이밍 액션
+                <input type="radio" name="non-gaming" id="jb-radio-2"> 논-게이밍 액션
               </label>
             </div>
 
-            <p><strong>Checkbox</strong></p>
+            <p><strong>게이밍 유형</strong></p>
             <div class="btn-group  btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-primary" >
-                <input type="checkbox" id="jb-radio-1"> Rapid Guessing
+                <input type="checkbox" name="rapid_guessing" id="jb-radio-1"> Rapid Guessing
               </label>
               <label class="btn btn-primary" >
-              <input type="checkbox" id="jb-radio-2"> System Abuse
+              <input type="checkbox" name="system_abuse" id="jb-radio-2"> System Abuse
               </label>
             </div>
+            <p></p>
+      
+       
+      <!--아무나 이와같은 포스트를 할 수 없도록 하고 해당 토큰을 가지고있는 클라이언트만 포스트 할 수 있도록 함-->
+      <button class="btn btn-primary" name="choice" value="{{screen.title}}">Next</button>
+      <p></p>
+ 
+  </form>
+  
+      
 
 
-          </div>
-        </div>
+
       </div>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    </body>
+      <!-- /.row -->
+
+     
+    
+
+  </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+   <!-- Icon Divider -->
+   <div class="divider-custom">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-icon" ><a href="/">
+      <i class="fas fa-star" ></i></a>
+    </div>
+    <div class="divider-custom-line"></div>
+  </div>
+
+
+  
+</body>
+
+
+
+
+
+     
+
+      <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Location</h4>
+          <p class="lead mb-0">2215 John Daniel Drive
+            <br>Clark, MO 65243</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">To The Top</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#page-top">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">About Freelancer</h4>
+          <p class="lead mb-0">Freelance is a free to use, MIT licensed Bootstrap theme created by
+            <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; 인지컴퓨팅 연구실 2020 </small>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+
+
+  </html>

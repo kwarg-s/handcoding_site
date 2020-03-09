@@ -43,8 +43,9 @@ def update(request,screen_id):
 
     print(request.POST)
     
-    screen.gaming_type=request.POST['gaming_type']
+    # screen.gaming_type=request.POST['gaming_type']
     screen.save()
     return redirect('/screen/'+str(screen_id))
-  except:
+  except Exception as e:
+    print(e.args)
     return render(request,'home.html')
