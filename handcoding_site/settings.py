@@ -25,7 +25,9 @@ SECRET_KEY = 'neveu!y5_ta$!(opppt3*)#1my5z$4(66slcpn2ftna=&(ft)b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '147.47.120.37',
+]
 
 
 # Application definition
