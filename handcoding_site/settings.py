@@ -76,12 +76,31 @@ WSGI_APPLICATION = 'handcoding_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+import platform
+p=platform.platform()
+
+if 'Windows' in p :
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+
+else:
+    DATABASES={
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'handcoding_site',
+            'USER': 'kmz',
+            'PASSWORD': 'aksen3299!',
+            'HOST': 'localhost',
+            'PORT': '3306',
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            }
+        }      
+    }
 
 
 # Password validation
