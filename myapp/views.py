@@ -5,16 +5,7 @@ from django.shortcuts import get_object_or_404
 
 def home(request):
     return render(request,'home.html')
-    screen_id=1
-    screen_detail=get_object_or_404(Screen,pk=screen_id)
-    next_screen_id=screen_id+1
-    before_screen_id=screen_id-1
-    return render(request,'new.html',{'screen':screen_detail,'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
 
-
-def create(request):
-  # 생략
-  profile.photo = request.FILES['photo']
 
 def detail(request,screen_id): 
   #https://tutorial.djangogirls.org/ko/extend_your_application/
