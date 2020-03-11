@@ -74,3 +74,105 @@
     vertical-align: middle;
     }
     
+
+    /*  */
+
+    .gaming_form{
+      width:33%; 
+      border: 1px solid; 
+      border-color:black; 
+      text-align:center;
+      left:33%;
+      position:relative;
+    }
+    p { margin:20px 0px; }
+    .btn-primary{
+      background-color: aquamarine;
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+      background-color: indigo;
+      border-color: indigo;
+    }
+
+    .btn-secondary {
+    color: #fff;
+    background-color: cornflowerblue;
+    border-color: #2c3e50;
+  }
+
+  .btn-secondary:hover {
+    color: #fff;
+    background-color: black;
+    border-color: black;
+  }
+  
+  .btn-secondary:focus, .btn-secondary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  }
+  .btn-danger {
+    color: #fff;
+    border-color: #2c3e50;
+  }
+  .btn-danger:focus, .btn-danger.focus {
+box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  }
+
+  .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
+  .show > .btn-danger.dropdown-toggle {
+    color: #fff;
+    background-color: #1a252f;
+    border-color: #151e27;
+  }
+
+  .btn-success {
+    color: #fff;
+    background-color:plum;
+    border-color: #2c3e50;
+    color:black;
+  }
+  .btn-success:focus, .btn-danger.focus {
+box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  }
+  .btn-success:hover {
+    color: #fff;
+    background-color: violet;
+    border-color: purple;
+  }
+
+
+  .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+  .show > .btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #1a252f;
+    border-color: #151e27;
+    background-color: purple;
+  }
+
+  .gaming-radio-box{
+    width:100%;
+    width:700px;
+    height:700px;
+  }
+  .gaming-radio{
+    width:100%;
+    width:700px;
+    height:700px;
+  }
+
+  @media ( max-width: 800px ) {
+    img {
+      width:95%;
+    }
+    .gaming_form{
+      width:95%;
+      left:2%;
+      position:relative;
+    }
+      body { color: red; }
+      #gaming-radio{
+      background-color:chartreuse;
+    }
+    }
+    
