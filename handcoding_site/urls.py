@@ -21,6 +21,7 @@ urlpatterns = [
     path('',myapp.views.home,name='home'),
     path('screen/<int:screen_id>/',myapp.views.detail, name='detail'),
     path('screen/<int:screen_id>/update',myapp.views.update,name='update'),
+    path('finish',myapp.views.finish,name='finish'),
 ]
 
 ###
