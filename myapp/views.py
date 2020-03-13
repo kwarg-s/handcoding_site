@@ -7,7 +7,10 @@ def home(request):
   return render(request,'home.html')
 
 def finish(request):
-  return render(request,'base.html')
+  return render(request,'finish.html')
+
+def child(request):
+  return render(request, 'child.html')
 
 
 def detail(request,screen_id): 
