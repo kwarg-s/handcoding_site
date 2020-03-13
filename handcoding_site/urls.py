@@ -19,10 +19,10 @@ import myapp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',myapp.views.home,name='home'),
-    path('screen/<int:screen_id>/',myapp.views.detail, name='detail'),
-    path('screen/<int:screen_id>/update',myapp.views.update,name='update'),
+    path('<screen_id>/',myapp.views.detail, name='detail'),
+    path('<screen_id>/update',myapp.views.update,name='update'),
     path('finish',myapp.views.finish,name='finish'),
-    path('child',myapp.views.child,name='child'),
+    path('<game_name>/selection',myapp.views.selection,name='selection')
 ]
 
 ###
