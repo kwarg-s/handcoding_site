@@ -19,8 +19,8 @@ import myapp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',myapp.views.home,name='home'),
-    path('<screen_id>/',myapp.views.detail, name='detail'),
-    path('<screen_id>/update',myapp.views.update,name='update'),
+    path('<coder_id>/<screen_id>/',myapp.views.detail, name='detail'),
+    path('<coder_id>/<screen_id>/update',myapp.views.update,name='update'),
     path('finish',myapp.views.finish,name='finish'),
     path('<game_name>/selection',myapp.views.selection,name='selection'),
     path('submit_coder',myapp.views.submit_coder,name='submit_coder')

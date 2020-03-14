@@ -18,6 +18,7 @@ def submit_coder(request):
     print('어딨어')
     post=request.POST
     coder_id=post['coder_id']
+    coder_id=coder_id+'_MangoShop'
     print(post)
     try:
       coder=Coder(coder_id=coder_id,created='0000')
@@ -25,8 +26,7 @@ def submit_coder(request):
     except:
       pass
 
-    
-    return redirect('MangoShop_1/')
+    return redirect(coder_id+'/'+'MangoShop_1/')
   except Exception as e:
     print('여기야?')
     print(e.args)
@@ -34,7 +34,7 @@ def submit_coder(request):
   
 
 
-def detail(request,screen_id): 
+def detail(request,screen_id,coder_id): 
   #https://tutorial.djangogirls.org/ko/extend_your_application/
   #https://ssungkang.tistory.com/entry/Django-06pk-path-converter-getobjector404%EB%9E%80?category=320582
   try:
@@ -45,7 +45,11 @@ def detail(request,screen_id):
     before_screen_id=game_name+'_'+str(screen_num-1)
     print(next_screen_id)
     print(before_screen_id)
-    return render(request,'new.html',{'screen':screen_detail,'screen_num':screen_id,'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
+
+    
+    return render(request,'new.html',{'screen':screen_detail,'screen_num':screen_id,\
+      'coder_id':coder_id,
+      'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
   except Exception as e:
     print('111오류메시지시작')
     print(e.args)
@@ -53,7 +57,8 @@ def detail(request,screen_id):
     return finish(request)
 
 import time
-def update(request,screen_id):
+
+def update(request,screen_id,coder_id):
   try:
     #https://rednooby.tistory.com/90
 
@@ -78,10 +83,10 @@ def update(request,screen_id):
 
     screen_id_to_update=screen_id.split('_')[0]+'_'+str(int(screen_id.split('_')[1])-1)
     result_time=time.ctime()
-    result=Result(screen_id=screen_id_to_update,gaming=gaming,gaming_type=s,result_time=result_time)
+    result=Result(screen_id=screen_id_to_update,gaming=gaming,gaming_type=s,result_time=result_time,coder_id=coder_id)
     result.save()
 
-    return redirect('/'+screen_id)
+    return redirect('/'+coder_id+'/'+screen_id)
   
   except Exception as e:
     print('222오류메시지시작')

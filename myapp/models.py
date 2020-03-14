@@ -23,7 +23,7 @@ class Screen(models.Model):
 class Result(models.Model):
     result_id = models.AutoField(primary_key=True)
 
-    coder=models.CharField(max_length=200, default="kmz")
+    coder_id=models.CharField(max_length=200, default="kmz")
     game_name=models.CharField(max_length=200,default="MangoShop")
     screen_id=models.CharField(max_length=200, default="none")
     gaming=models.IntegerField(default=-1)

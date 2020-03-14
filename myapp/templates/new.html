@@ -202,7 +202,7 @@ box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
     </script>
 
 
-      <form action = "/{{next_screen_id}}/update" method="post" class="gaming_form">
+      <form action = "/{{coder_id}}/{{next_screen_id}}/update" method="post" class="gaming_form">
       <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
       {% csrf_token %}
 
@@ -230,7 +230,7 @@ box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
        
       <!--아무나 이와같은 포스트를 할 수 없도록 하고 해당 토큰을 가지고있는 클라이언트만 포스트 할 수 있도록 함-->
       
-      <a class="btn btn-primary" href="/{{before_screen_id}}/">Prev</a>
+      <a class="btn btn-primary" href="/{{coder_id}}/{{before_screen_id}}/">Prev</a>
       {{screen_num}}
       <button class="btn btn-primary" name="choice" value="{{screen.title}}">Next</button>
       <p></p>
