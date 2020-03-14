@@ -22,15 +22,14 @@ def submit_coder(request,game_name):
     coder_id=coder_id+'_'+game_name
     print(post)
     try:
-
+      coder=get_object_or_404(Coder,pk=coder_id)
+      screen_id=coder.recent_screen_id.split('_')[1]
+      screen_id=game_name+'_'+str(int(screen_id)+1)
+    except:
       created=time.ctime()
       coder=Coder(coder_id=coder_id,created=created)
       screen_id=game_name+'_1'
       coder.save()
-    except:
-      coder=get_object_or_404(Coder,pk=coder_id)
-      screen_id=coder.recent_screen_id.split('_')[1]
-      screen_id=game_name+'_'+str(int(screen_id)+1)
     if coder_id=="_"+game_name:
       return redirect('/'+coder_id+'/'+game_name+'_1'+'/')
     return redirect('/'+coder_id+'/'+screen_id+'/')
@@ -84,9 +83,12 @@ def update(request,screen_id,coder_id):
         s+="rapid_guessing "
       if 'system_abuse' in post.keys():
         s+="system_abuse "
-    else:
+    elif 'non-gaming' in post.keys():
       gaming=0
       s="non-gaming"
+    else:
+      gaming=-1
+      s=""
 
     screen_id_to_update=screen_id.split('_')[0]+'_'+str(int(screen_id.split('_')[1])-1)
     result_time=time.ctime()
