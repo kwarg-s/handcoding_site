@@ -92,7 +92,7 @@ else:
     DATABASES={
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'handcoding_site',
+            'NAME': 'codingsite',
             'USER': 'kmz',
             'PASSWORD': 'aksen3299!',
             'HOST': 'localhost',
