@@ -169,58 +169,60 @@
 
 
 <div class="modal fade" id="inputCoder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document" style="width:100%; padding:0 0 0 0;">
-    <div id="modalcontent">
-      <center><p><h1>코딩 매뉴얼</h1></p></center>
-      <center><p><h2>Gaming action</h2></p></center>
-      <div>학습한 지식을 가지고 맞게 답하려고 하는 것이 아니라, 시스템의 특성을 이용해서 교육용 환경을 succeed하려고 시도하는 행동 (baker,2006)
-      </div>
-      <center><p><h2>오픈 코딩 하는 방법</h2></p></center>
-      <div>
-        학생의 문제 풀이 action을 관찰했을 때, 본인이 생각하기에 gaming action에 해당된다고 생각하면 "게이밍 액션"을 선택해주세요. gaming action이 아니라고 생각하면 "논-게이밍 액션"을 선택해주세요.
-      </div>
-      <center><p><img src="../../media/gaming.PNG" width=80%;></p></center>
+    <div class="modal-dialog" role="document" style="width:10px; padding:0 0 0 0; background-color:orange;"></div>
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
     
-      <div>
-        Gaming action인 경우, 해당 gaming action이 속하는 유형을 선택해주세요(Rapid Guessing 또는 System Abuse). 중복 선택 가능합니다.  
-      </div>
-      <center><p><img src="../../media/gaming_type.PNG" width=80%;></p></center>
-      <center><p><h2>Gaming action의 유형</h2></p></center>
-      <div>
-        Gaming action은 두가지 유형이 있습니다.
-      </div><br>
-      <div>
-      <ul>
-        <li>Rapid Guessing : 틀린 직후에 깊이 생각하지 않고 빠르게 답을 입력하는 것</li>
-        <li>System Abuse : 게임의 System적 특성을 이용해서 게임을 진행하려고 하는 것 </li>
-      </ul>
-    </div>
 
-  </div>
-</div>
 
-  <div  style=" position:fixed; right:22%; top:0px; padding:0 0 0 0;">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myNewModal" style="color:teal;">
-      코딩 예시 보기
-    </button>
-    <button type="button" class="btn  btn-primary" data-dismiss="modal" id="close"> <i class="fas fa-times fa-fw"></i></button>
-  </div>
 
-<div class="modal fade" id="myNewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document" style="width:100%;">
-    <div id="modalcontent">
-      <center><img src="../../media/sample2.gif" width=90%;></center><br>  
-      답 입력 속도가 체감상 지나치게 빠르므로 gaming action이며, rapid guessing입니다.
-      <center><img src="../../media/sample1.gif" width=90%;></center><br>
-      카드를 순차적으로 입력하면서 맞추었습니다. 정답 카드를 올려놓기만 하면 succeed할 수 있다는 system적 특성을 이용하였을 가능성이 높으므로, gaming action이며, System abuse입니다.
-      
-    </div>
-  </div>
-  <div  style=" position:fixed; right:22%; top:0px; border:1px solid black; padding:0 0 0 0;">
-    <button type="button" class="btn  btn-primary" data-dismiss="modal" id="close"> <i class="fas fa-times fa-fw"></i></button>
-  </div>
-</div>
+      <div class="container">
+        <!-- Contact Section Form -->
+        <form action = "/submit_coder" method="post" class="gaming_form">
+          <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
+          {% csrf_token %}
 
+        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+          <label>코더 이름 입력</label>
+          <input name="coder_id" class="form-control" id="name" type="text" placeholder="코더 이름" data-validation-required-message="Please enter your name.">
+          <p class="help-block text-danger"></p>
+        </div>        
+            
+          <button class="btn btn-primary" name="choice" value="{{screen.title}}">Next</button>
+          <p></p>
+     
+      </form>
+        
+
+
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+            <!-- <form name="sentMessage" id="contactForm" novalidate="novalidate"> -->
+              <form action = "/submit_coder/" method="post" class="submit_coder_form">
+                {% csrf_token %}
+        
+              <div class="control-group">
+                
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>코더 이름 입력</label>
+                  <input class="form-control" id="name" type="text" placeholder="코더 이름" data-validation-required-message="Please enter your name.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br>
+              <div id="success"></div>
+
+              <button class="btn btn-primary" name="choice" >Next</button>
+              <div class="form-group">
+                <center><button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">코딩하러 가기</button></center>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        </div>
+ 
 </div>
 
 

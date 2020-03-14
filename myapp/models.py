@@ -1,5 +1,5 @@
 from django.db import models
-
+import time
 #https://ssungkang.tistory.com/entry/Django-media-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0
 # Create your models here.
 class Screen(models.Model):
@@ -15,8 +15,6 @@ class Screen(models.Model):
     pic=models.ImageField(upload_to="image")
     game_name=models.CharField(max_length=200,default="MangoShop")
 
-    gaming=models.IntegerField(default=-1)
-    gaming_type=models.TextField(default="non gaming")
     
 
     def __str__(self):
@@ -30,13 +28,16 @@ class Result(models.Model):
     screen_id=models.CharField(max_length=200, default="none")
     gaming=models.IntegerField(default=-1)
     gaming_type=models.TextField(default="non gaming")
+    result_time=models.CharField(max_length=200, default="0000")
 
     def __str__(self):
         return str(self.screen_id)
 
 class Coder(models.Model):
 
-    coder=models.CharField(max_length=200, primary_key=True, default="kmz")
+    coder_id=models.CharField(max_length=200, primary_key=True, default='kmz_MangoShop') #'kmz_MangoShop'
+    recent_screen_id=models.CharField(max_length=200, default="none")
+    created=models.CharField(max_length=200, default="0000")
 
     def __str__(self):
-        return self.coder
+        return self.coder_id
