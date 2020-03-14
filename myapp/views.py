@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Screen,Result,Coder
 from django.shortcuts import get_object_or_404
+import time
 # Create your views here.
 
 def home(request):
@@ -13,20 +14,26 @@ def selection(request,game_name):
   return render(request, 'selection.html')
 
 
-def submit_coder(request):
+def submit_coder(request,game_name):
   try:
     print('어딨어')
     post=request.POST
     coder_id=post['coder_id']
-    coder_id=coder_id+'_MangoShop'
+    coder_id=coder_id+'_'+game_name
     print(post)
     try:
-      coder=Coder(coder_id=coder_id,created='0000')
+
+      created=time.ctime()
+      coder=Coder(coder_id=coder_id,created=created)
+      screen_id=game_name+'_1'
       coder.save()
     except:
-      pass
-
-    return redirect(coder_id+'/'+'MangoShop_1/')
+      coder=get_object_or_404(Coder,pk=coder_id)
+      screen_id=coder.recent_screen_id.split('_')[1]
+      screen_id=game_name+'_'+str(int(screen_id)+1)
+    if coder_id=="_"+game_name:
+      return redirect('/'+coder_id+'/'+game_name+'_1'+'/')
+    return redirect('/'+coder_id+'/'+screen_id+'/')
   except Exception as e:
     print('여기야?')
     print(e.args)
@@ -56,7 +63,7 @@ def detail(request,screen_id,coder_id):
     print('111오류메시지끝')
     return finish(request)
 
-import time
+
 
 def update(request,screen_id,coder_id):
   try:
@@ -85,6 +92,11 @@ def update(request,screen_id,coder_id):
     result_time=time.ctime()
     result=Result(screen_id=screen_id_to_update,gaming=gaming,gaming_type=s,result_time=result_time,coder_id=coder_id)
     result.save()
+    coder=get_object_or_404(Coder,pk=coder_id)
+    coder.recent_screen_id=screen_id_to_update
+    coder.save()
+
+
 
     return redirect('/'+coder_id+'/'+screen_id)
   

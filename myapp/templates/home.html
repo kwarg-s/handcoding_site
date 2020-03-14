@@ -6,7 +6,7 @@
   <div class="container">
 
     <!-- Portfolio Section Heading -->
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">오픈 코딩 하러 가기</h2>
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">게임 선택하기</h2>
 
     <!-- Icon Divider -->
     <div class="divider-custom">
@@ -128,3 +128,56 @@
     </button>
 
 {% endblock %}
+
+
+{% block game_name %}
+
+<style>
+  #inputCoder{
+    top:25%;
+    height:50%;
+  }
+
+  #submit{
+    color:cadetblue;
+    font-size:1.5em;
+    padding:0 0 0 0;
+  }
+  #submit:hover{
+    color:white;
+  }
+
+
+</style>
+<div class="modal fade" id="inputCoder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div  style="right:0px;  padding:0 0 0 0; text-align:right;">
+    <button type="button" class="btn  btn-primary" data-dismiss="modal" id="close"> <i class="fas fa-times fa-fw"></i></button>
+  </div>
+
+  <div class="modal-dialog" role="document" style="width:10px; padding:0 0 0 0; background-color:orange;"></div>
+  <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">MangoShop</h2>
+
+    <div class="container" style="border:none">
+      <!-- Contact Section Form -->
+      <form action = "/MangoShop/submit_coder" method="post" class="gaming_form"  style="border:none"  style="border:none" >
+        <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
+        {% csrf_token %}
+
+      <div class="form-group floating-label-form-group controls mb-0 pb-2"  style="border:none" >
+        <label>코더 이름 입력</label>
+        <input name="coder_id" class="form-control" id="name" type="text" placeholder="코더 이름" data-validation-required-message="Please enter your name."  style="border:none">
+        <p class="help-block text-danger"></p>
+      </div>        
+          
+        <button class="btn btn-primary" id="submit" name="choice" value="{{screen.title}}"  style="height:4em; width:10em;">코딩하러 가기</button>
+        <p></p>
+
+    </form>
+
+
+      </div>
+      
+</div>
+
+{% endblock %}
+
