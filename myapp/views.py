@@ -75,15 +75,15 @@ def update(request,screen_id,coder_id):
 
     # choice = Choice(poll_id = poll.id, candidate_id = selection, votes = 1)
     # choice.save()
-
-    if 'gaming' in post.keys():
+    print(post)
+    if post['gaming']=='1':
       gaming=1
       s=""
       if 'rapid_guessing' in post.keys():
         s+="rapid_guessing "
       if 'system_abuse' in post.keys():
         s+="system_abuse "
-    elif 'non-gaming' in post.keys():
+    elif post['gaming']=='0':
       gaming=0
       s="non-gaming"
     else:

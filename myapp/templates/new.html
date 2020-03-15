@@ -211,12 +211,12 @@ box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
       {% csrf_token %}
 
       <p><strong>게이밍 여부</strong></p>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons" id="gaming-radio-box">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" id="gaming-radio-box" >
               <label class="btn btn-secondary" >
-                <input type="radio" name="gaming" id="gaming-radio"> <a id="gaming-radio">게이밍 액션</a>
+                <input type="radio" name="gaming" value=1 id="gaming-radio" required="required" data-validation-required-message="Please enter your name."> <a id="gaming-radio">게이밍 액션</a>
               </label>
               <label class="btn btn-danger">
-                <input type="radio" name="non-gaming" id="non-gaming-radio"> <a id="non-gaming-radio">논-게이밍 액션</a>
+                <input type="radio" name="gaming" value=0 id="non-gaming-radio"> <a id="non-gaming-radio">논-게이밍 액션</a>
               </label>
             </div>
 
