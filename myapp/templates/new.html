@@ -1,395 +1,232 @@
+{% extends "base.html" %}
 
-{% load static %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
+<style>
+  img {
+  width:650px;}
+.gaming_form{
+  width:33%; 
+  /* border: 1px solid;  */
+  border-color:black; 
+  text-align:center;
+  left:33%;
+  position:relative;
+}
+p { margin:20px 0px; }
+.btn-primary{
+  background-color: aquamarine;
+  color:cadetblue;
+  border-color:cadetblue;
+}
 
-<head>
+.btn-secondary:hover {
+  color: #fff;
+  background-color: indigo;
+  border-color: indigo;
+}
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+.btn-secondary {
+color: #fff;
+background-color: cornflowerblue;
+border-color: #2c3e50;
+}
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+.btn-secondary:hover {
+color: #fff;
+background-color: black;
+border-color: black;
+}
 
-  <title>오픈 코딩 사이트</title>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="static/myapp/vendor/jquery/jquery.min.js"></script>
-  <script src="static/myapp/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="static/myapp/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Contact Form JavaScript -->
-  <script src="static/myapp/js/jqBootstrapValidation.js"></script>
-  <script src="static/myapp/js/contact_me.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="static/myapp/js/freelancer.min.js"></script>
-
-
-   <!-- Custom fonts for this theme -->
-  <link href='{% static "myapp/vendor/fontawesome-free/css/all.min.css" %}' rel="stylesheet" type="text/css">
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- Theme CSS -->
-    <link href="{% static 'myapp/css/freelancer.min.css' %}" rel="stylesheet">
-
-    <link rel="stylesheet" href="../static/myapp/mycss.css">
-
-    
-    <style>
-      img {
-      width:650px;}
-    .gaming_form{
-      width:33%; 
-      /* border: 1px solid;  */
-      border-color:black; 
-      text-align:center;
-      left:33%;
-      position:relative;
-    }
-    p { margin:20px 0px; }
-    .btn-primary{
-      background-color: aquamarine;
-      color:cadetblue;
-      border-color:cadetblue;
-    }
-
-    .btn-secondary:hover {
-      color: #fff;
-      background-color: indigo;
-      border-color: indigo;
-    }
-
-    .btn-secondary {
-    color: #fff;
-    background-color: cornflowerblue;
-    border-color: #2c3e50;
-  }
-
-  .btn-secondary:hover {
-    color: #fff;
-    background-color: black;
-    border-color: black;
-  }
-  
-  .btn-secondary:focus, .btn-secondary.focus {
-    box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
-  }
-  .btn-danger {
-    color: #fff;
-    border-color: #2c3e50;
-  }
-  .btn-danger:hover{
-    background-color: #1a252f;
-    border-color:  #1a252f;;
-  }
-  .btn-danger:focus, .btn-danger.focus {
-    background-color: #1a252f;
-  }
-
-  .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
-  .show > .btn-danger.dropdown-toggle {
-    color: #fff;
-    background-color: #1a252f;
-    border-color: #151e27;
-  }
-
-  .btn-success {
-    color: #fff;
-    background-color:plum;
-    border-color: #2c3e50;
-    color:black;
-  }
-  .btn-success:focus, .btn-danger.focus {
+.btn-secondary:focus, .btn-secondary.focus {
 box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
-  }
-  .btn-success:hover {
-    color: #fff;
-    background-color: purple;
-    border-color: purple;
-  }
+}
+.btn-danger {
+color: #fff;
+border-color: #2c3e50;
+}
+.btn-danger:hover{
+background-color: #1a252f;
+border-color:  #1a252f;;
+}
+.btn-danger:focus, .btn-danger.focus {
+background-color: #1a252f;
+}
+
+.btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
+.show > .btn-danger.dropdown-toggle {
+color: #fff;
+background-color: #1a252f;
+border-color: #151e27;
+}
+
+.btn-success {
+color: #fff;
+background-color:plum;
+border-color: #2c3e50;
+color:black;
+}
+.btn-success:focus, .btn-danger.focus {
+box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+}
+.btn-success:hover {
+color: #fff;
+background-color: purple;
+border-color: purple;
+}
 
 
-  .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
-  .show > .btn-success.dropdown-toggle {
-    color: #fff;
-    background-color: #1a252f;
-    border-color: #151e27;
-    background-color: purple;
-  }
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+color: #fff;
+background-color: #1a252f;
+border-color: #151e27;
+background-color: purple;
+}
 
 
-  @media ( max-width: 900px ) {
-    img {
-      width:100%;
-    }
-    .gaming_form{
-      width:95%;
-      left:2%;
-      position:relative;
-    }
-    }
-    
-
-  </style>
+@media ( max-width: 900px ) {
+img {
+  width:100%;
+}
+.gaming_form{
+  width:95%;
+  left:2%;
+  position:relative;
+}
+}
 
 
-</head>
+</style>
 
-<body id="page-top" >
 
-   <!-- Navigation -->
-   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/">오픈 코딩 사이트</a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"  data-toggle="modal"  data-target="#myModal">코딩 매뉴얼</a>
-          </li>         
-        </ul>
-      </div>
+ <!-- Portfolio Section -->
+ <section class="page-section portfolio" id="portfolio">
+  <div class="container">
+    <div class="container d-flex align-items-center flex-column" style="color:black;">       
+      <img src="{{ screen.pic.url }}"  >
+      <!-- <p class="masthead-subheading font-weight-light mb-0"> {{screen.title}}</p> -->
     </div>
-  </nav>
-
-  <!-- Masthead
-  <header class="masthead  text-white text-center" style="color:black;">
-    
-  </header> -->
-
-  <!-- Portfolio Section -->
-  <section class="page-section portfolio" id="portfolio">
-    <div class="container">
-      <div class="container d-flex align-items-center flex-column" style="color:black;">       
-        <img src="{{ screen.pic.url }}"  >
-        <!-- <p class="masthead-subheading font-weight-light mb-0"> {{screen.title}}</p> -->
-      </div>
 
 
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script>
-    $(document).ready(function(){
-    $("#gaming-radio").change(function(){
-        if($("#gaming-radio").is(":checked")){
-          $("#gaming-check-box").show();
-          $("#label-check-box").show();
-        }else{
-          // $("#gaming-check-box").hide();
-          // $("#label-check-box").hide();
-        }
-    });
-    });
-    $(document).ready(function(){
-    $("#non-gaming-radio").change(function(){
-        if($("#non-gaming-radio").is(":checked")){
-          $("#gaming-check-box").hide();
-          $("#label-check-box").hide();
-        }else{
-          $("#gaming-check-box").show();
-          $("#label-check-box").show();
-        }
-    });
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+  $("#gaming-radio").change(function(){
+      if($("#gaming-radio").is(":checked")){
+        $("#gaming-check-box").show();
+        $("#label-check-box").show();
+      }else{
+        // $("#gaming-check-box").hide();
+        // $("#label-check-box").hide();
+      }
+  });
+  });
+  $(document).ready(function(){
+  $("#non-gaming-radio").change(function(){
+      if($("#non-gaming-radio").is(":checked")){
+        $("#gaming-check-box").hide();
+        $("#label-check-box").hide();
+      }else{
+        $("#gaming-check-box").show();
+        $("#label-check-box").show();
+      }
+  });
 });
-    </script>
+  </script>
 
 
-      <form action = "/{{coder_id}}/{{next_screen_id}}/update" method="post" class="gaming_form">
-      <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
-      {% csrf_token %}
+    <form action = "/{{coder_id}}/{{next_screen_id}}/update" method="post" class="gaming_form">
+    <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
+    {% csrf_token %}
 
-      <p><strong>게이밍 여부</strong></p>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons" id="gaming-radio-box" >
-              <label class="btn btn-secondary" >
-                <input type="radio" name="gaming" value=1 id="gaming-radio" required="required" data-validation-required-message="Please enter your name."> <a id="gaming-radio">게이밍 액션</a>
-              </label>
-              <label class="btn btn-danger">
-                <input type="radio" name="gaming" value=0 id="non-gaming-radio"> <a id="non-gaming-radio">논-게이밍 액션</a>
-              </label>
-            </div>
+    <p><strong>게이밍 여부</strong></p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons" id="gaming-radio-box" >
+            <label class="btn btn-secondary" >
+              <input type="radio" name="gaming" value=1 id="gaming-radio" required="required" data-validation-required-message="Please enter your name."> <a id="gaming-radio">게이밍 액션</a>
+            </label>
+            <label class="btn btn-danger">
+              <input type="radio" name="gaming" value=0 id="non-gaming-radio"> <a id="non-gaming-radio">논-게이밍 액션</a>
+            </label>
+          </div>
 
-            <p id="label-check-box"><strong>게이밍 유형</strong></p>
-            <div class="btn-group  btn-group-toggle" data-toggle="buttons" id="gaming-check-box">
-              <label class="btn btn-success" >
-                <input type="checkbox" name="rapid_guessing" id="jb-radio-1"> Rapid Guessing
-              </label>
-              <label class="btn btn-success" >
-              <input type="checkbox" name="system_abuse" id="jb-radio-2"> System Abuse
-              </label>
-            </div>
-            <p></p>
-      
-       
-      <!--아무나 이와같은 포스트를 할 수 없도록 하고 해당 토큰을 가지고있는 클라이언트만 포스트 할 수 있도록 함-->
-      
-      <a class="btn btn-primary" href="/{{coder_id}}/{{before_screen_id}}/">Prev</a>
-      {{screen_num}}
-      <button class="btn btn-primary" name="choice" value="{{screen.title}}">Next</button>
-      <p></p>
- 
-  </form>
-  
-      
-
-
-
-      </div>
-      <!-- /.row -->
-
+          <!-- <p id="label-check-box"><strong>게이밍 유형</strong></p>
+          <div class="btn-group  btn-group-toggle" data-toggle="buttons" id="gaming-check-box">
+            <label class="btn btn-success" >
+              <input type="checkbox" name="rapid_guessing" id="jb-radio-1"> Rapid Guessing
+            </label>
+            <label class="btn btn-success" >
+            <input type="checkbox" name="system_abuse" id="jb-radio-2"> System Abuse
+            </label>
+          </div> -->
+          <p></p>
+    
      
+    <!--아무나 이와같은 포스트를 할 수 없도록 하고 해당 토큰을 가지고있는 클라이언트만 포스트 할 수 있도록 함-->
+    
+    <a class="btn btn-primary" href="/{{coder_id}}/{{before_screen_id}}/">Prev</a>
+    {{screen_num}}
+    <button class="btn btn-primary" name="choice" value="{{screen.title}}">Next</button>
+    <p></p>
+
+</form>
+
     
 
-  </section>
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    </div>
+    <!-- /.row -->
+
+   
+  
+
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-   <header>
-     
-
-<style>
-  #myModal{
-    font-size:1.3em;
-    text-align:left;
-    width: 60%;
-    background-color:gray;
-    left:20%;
-    color:black;
-    background-color:white;
-    padding:0 0 0 0;
-    margin: 0 0 0 0;
-    overflow:auto;
-  }
-  #myNewModal{
-    border:0;
-    /* font-size:1.3em; */
-    /* text-align:center; */
-    width: 60%;
-    
-    left:20%;
-    color:black;
-    background-color:white;
-    padding:0 0 0 0;
-    margin: 0 0 0 0;
-  }
-  #modalcontent{
-    padding:0 0 0 0;
-    margin: 0 0 0 0;
-    height:600px;
-
-    width:100%;
-  }
-  #close{
-    color:teal;
-  }
- 
-  .manual-img{
-    width:80%;
-  }
-</style>
-
-<!-- Modal -->
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document" style="width:100%; padding:0 0 0 0;">
-    <div id="modalcontent">
-      <center><p><h1>코딩 매뉴얼</h1></p></center>
-      <center><p><h2>Gaming action</h2></p></center>
-      <div>학습한 지식을 가지고 맞게 답하려고 하는 것이 아니라, 시스템의 특성을 이용해서 교육용 환경을 succeed하려고 시도하는 행동 (baker,2006)
-      </div>
-      <center><p><h2>오픈 코딩 하는 방법</h2></p></center>
-      <div>
-        학생의 문제 풀이 action을 관찰했을 때, 본인이 생각하기에 gaming action에 해당된다고 생각하면 "게이밍 액션"을 선택해주세요. gaming action이 아니라고 생각하면 "논-게이밍 액션"을 선택해주세요.
-      </div>
-      <center><p><img class="manual-img" src="../../media/gaming.PNG" width=60%;></p></center>
-    
-      <div>
-        Gaming action인 경우, 해당 gaming action이 속하는 유형을 선택해주세요(Rapid Guessing 또는 System Abuse). 중복 선택 가능합니다.  
-      </div>
-      <center><p><img class="manual-img" src="../../media/gaming_type.PNG" width=100px;></p></center>
-      <center><p><h2>Gaming action의 유형</h2></p></center>
-      <div>
-        Gaming action은 두가지 유형이 있습니다.
-      </div><br>
-      <div>
-      <ul>
-        <li>Rapid Guessing : 틀린 직후에 깊이 생각하지 않고 빠르게 답을 입력하는 것</li>
-        <li>System Abuse : 게임의 System적 특성을 이용해서 게임을 진행하려고 하는 것 </li>
-      </ul>
-
+  <style>
+    #myModal{
+      font-size:1.3em;
+      text-align:left;
+      width: 60%;
+      background-color:gray;
+      left:20%;
+      color:black;
+      background-color:white;
+      padding:0 0 0 0;
+      margin: 0 0 0 0;
+      overflow:auto;
+    }
+    #myNewModal{
+      border:0;
+      /* font-size:1.3em; */
+      /* text-align:center; */
+      width: 60%;
       
-    </div>
-    
-    <!-- <p><h2>오픈 코딩의 예시</h2></p>
-    안녕안녕 -->
-  </div>
-</div>
-
-  <div  style=" position:fixed; right:22%; top:0px; padding:0 0 0 0;">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myNewModal" style="color:teal;">
-      코딩 예시 보기
-    </button>
-    <button type="button" class="btn  btn-primary" data-dismiss="modal" id="close"> <i class="fas fa-times fa-fw"></i></button>
-  </div>
-
-<div class="modal fade" id="myNewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document" style="width:100%;">
-    <div id="modalcontent">
-      <center><img class="manual-img" src="../../media/sample2.gif" width=90%;></center><br>  
-      답 입력 속도가 체감상 지나치게 빠르므로 gaming action이며, rapid guessing입니다.
-      <center><img class="manual-img" src="../../media/sample1.gif" width=90%;></center><br>
-      카드를 순차적으로 입력하면서 맞추었습니다. 정답 카드를 올려놓기만 하면 succeed할 수 있다는 system적 특성을 이용하였을 가능성이 높으므로, gaming action이며, System abuse입니다.
-      
-    </div>
-  </div>
-  <div  style=" position:fixed; right:22%; top:0px; border:1px solid black; padding:0 0 0 0;">
-    <button type="button" class="btn  btn-primary" data-dismiss="modal" id="close"> <i class="fas fa-times fa-fw"></i></button>
-  </div>
-</div>
- 
-   </header>
-
+      left:20%;
+      color:black;
+      background-color:white;
+      padding:0 0 0 0;
+      margin: 0 0 0 0;
+    }
+    #modalcontent{
+      padding:0 0 0 0;
+      margin: 0 0 0 0;
+      height:600px;
   
-</body>
-
-
-      <!-- Footer -->
-  <footer class="footer text-center">
-    <div class="container">
-      <div class="row">
-
-      </div>
-    </div>
-  </footer>
-
-  <!-- Copyright Section -->
-  <section class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>Copyright &copy; 인지컴퓨팅 연구실 2020 </small>
-    </div>
-  </section>
-
-  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-  <div class="scroll-to-top d-lg-none position-fixed ">
-    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-      <i class="fa fa-chevron-up"></i>
-    </a>
-  </div>
-
-
-
-  </html>
+      width:100%;
+    }
+    #close{
+      color:teal;
+    }
+   
+    .manual-img{
+      width:80%;
+    }
+  </style>
+{% endblock %}
