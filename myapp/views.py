@@ -62,6 +62,8 @@ def detail(request,screen_id,coder_id):
     print('111오류메시지끝')
     return finish(request)
 
+def input_coder(request,game_name):
+  return render(request,'input_coder.html',{'game_name':game_name})
 
 
 def update(request,screen_id,coder_id):
@@ -78,21 +80,28 @@ def update(request,screen_id,coder_id):
     print(post)
     if post['gaming']=='1':
       gaming=1
-      s=""
+      
       if 'rapid_guessing' in post.keys():
-        s+="rapid_guessing "
+        rg=1
+      else:
+        rg=0
       if 'system_abuse' in post.keys():
-        s+="system_abuse "
+        sa=1
+      else:
+        sa=0
     elif post['gaming']=='0':
       gaming=0
-      s="non-gaming"
+      rg=-1
+      sa=-1
     else:
       gaming=-1
-      s=""
+      rg=-1
+      sa=-1
+  
 
     screen_id_to_update=screen_id.split('_')[0]+'_'+str(int(screen_id.split('_')[1])-1)
     result_time=time.ctime()
-    result=Result(screen_id=screen_id_to_update,gaming=gaming,gaming_type=s,result_time=result_time,coder_id=coder_id)
+    result=Result(screen_id=screen_id_to_update,gaming=gaming,gaming_type="",result_time=result_time,coder_id=coder_id,rapid_guessing=rg,system_abuse=sa)
     result.save()
     coder=get_object_or_404(Coder,pk=coder_id)
     coder.recent_screen_id=screen_id_to_update

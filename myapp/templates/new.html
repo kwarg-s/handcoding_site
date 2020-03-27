@@ -6,11 +6,11 @@
   img {
   width:650px;}
 .gaming_form{
-  width:33%; 
+  width:50%; 
   /* border: 1px solid;  */
   border-color:black; 
   text-align:center;
-  left:33%;
+  left:25%;
   position:relative;
 }
 p { margin:20px 0px; }
@@ -95,7 +95,13 @@ img {
   position:relative;
 }
 }
-
+#gaming-check-box{
+  display:none;
+  font-size:1.2em;
+}
+#label-check-box{
+  display:none;
+}
 
 </style>
 
@@ -103,9 +109,12 @@ img {
  <!-- Portfolio Section -->
  <section class="page-section portfolio" id="portfolio">
   <div class="container">
-    <div class="container d-flex align-items-center flex-column" style="color:black;">       
+    <h2 class="page-section-heading text-center text-uppercase text-white">{{screen_num}}</h2>
+    <div class="container d-flex align-items-center flex-column" style="color:black;">      
+      <!-- Contact Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{screen_num}}</h2>
       <img src="{{ screen.pic.url }}"  >
-      <!-- <p class="masthead-subheading font-weight-light mb-0"> {{screen.title}}</p> -->
+      
     </div>
 
 
@@ -126,47 +135,64 @@ img {
   $(document).ready(function(){
   $("#non-gaming-radio").change(function(){
       if($("#non-gaming-radio").is(":checked")){
-        $("#gaming-check-box").hide();
-        $("#label-check-box").hide();
-      }else{
-        $("#gaming-check-box").show();
-        $("#label-check-box").show();
+        // $("#gaming-check-box").hide();
+        // $("#label-check-box").hide();
+        $("#gaming-check-box").css('display','none');
+        $("#label-check-box").css('display','none');
+      }else if($("#gaming-radio").is(":checked")){
+        //$("#gaming-check-box").show();
+        //$("#label-check-box").show();
+        $("#gaming-check-box").css('display','block');
+        $("#label-check-box").css('display','block');
+      }
+      else{
+        $("#gaming-check-box").css('display','none');
+        $("#label-check-box").css('display','none');
       }
   });
 });
+
   </script>
 
 
     <form action = "/{{coder_id}}/{{next_screen_id}}/update" method="post" class="gaming_form">
     <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
     {% csrf_token %}
-
-    <p><strong>게이밍 여부</strong></p>
+    
+    <strong style='font-size:1.2em;'>게이밍 여부&nbsp;&nbsp;&nbsp;</strong>
           <div class="btn-group btn-group-toggle" data-toggle="buttons" id="gaming-radio-box" >
             <label class="btn btn-secondary" >
               <input type="radio" name="gaming" value=1 id="gaming-radio" required="required" data-validation-required-message="Please enter your name."> <a id="gaming-radio">게이밍 액션</a>
             </label>
-            <label class="btn btn-danger">
+            <label class="btn btn-secondary">
               <input type="radio" name="gaming" value=0 id="non-gaming-radio"> <a id="non-gaming-radio">논-게이밍 액션</a>
             </label>
           </div>
+        
 
-          <!-- <p id="label-check-box"><strong>게이밍 유형</strong></p>
-          <div class="btn-group  btn-group-toggle" data-toggle="buttons" id="gaming-check-box">
-            <label class="btn btn-success" >
-              <input type="checkbox" name="rapid_guessing" id="jb-radio-1"> Rapid Guessing
-            </label>
-            <label class="btn btn-success" >
-            <input type="checkbox" name="system_abuse" id="jb-radio-2"> System Abuse
-            </label>
-          </div> -->
+          <!-- <p id="label-check-box"><strong>게이밍인 이유</strong></p> -->
+          <p></p>
+          <div  id="gaming-check-box">
+          
+          <div class="custom-control custom-checkbox">
+						<input type="checkbox" name="rapid_guessing"  id="jb-checkbox-1" class="custom-control-input">
+            <label class="custom-control-label" for="jb-checkbox-1">빠른 속도 때문에 게이밍이다</label>
+            
+          </div>
+          <div class="custom-control custom-checkbox">
+						<input type="checkbox" name="system_abuse" id="jb-checkbox-2" class="custom-control-input">
+						<label class="custom-control-label" for="jb-checkbox-2">제스쳐 때문에 게이밍이다</label>
+            
+          </div>
+
+          </div>
+          
           <p></p>
     
      
     <!--아무나 이와같은 포스트를 할 수 없도록 하고 해당 토큰을 가지고있는 클라이언트만 포스트 할 수 있도록 함-->
     
     <a class="btn btn-primary" href="/{{coder_id}}/{{before_screen_id}}/">Prev</a>
-    {{screen_num}}
     <button class="btn btn-primary" name="choice" value="{{screen.title}}">Next</button>
     <p></p>
 

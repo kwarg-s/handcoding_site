@@ -23,7 +23,8 @@ urlpatterns = [
     path('<coder_id>/<screen_id>/update',myapp.views.update,name='update'),
     path('finish',myapp.views.finish,name='finish'),
     path('<game_name>/selection',myapp.views.selection,name='selection'),
-    path('<game_name>/submit_coder',myapp.views.submit_coder,name='submit_coder')
+    path('<game_name>/submit_coder',myapp.views.submit_coder,name='submit_coder'),
+    path('<game_name>/input_coder',myapp.views.input_coder, name='input_coder')
 ]
 
 ###

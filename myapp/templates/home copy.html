@@ -18,15 +18,23 @@
       <div class="divider-custom-line"></div>
     </div>
 
-
+    <form action = "/MangoShop/submit_coder" method="post" class="gaming_form"  style="border:none"  style="border:none" >
+      <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
+      {% csrf_token %}
+    
+    <div class="form-group floating-label-form-group controls mb-0 pb-2"  style="border:none" >
+      <label>코더 이름 입력</label>
+      <input name="coder_id" class="form-control" id="name" type="text" placeholder="코더 이름" data-validation-required-message="Please enter your name."  style="border:none">
+      <p class="help-block text-danger"></p>
+    </div>        
+ 
     <!-- Portfolio Grid Items -->
     <div class="row">
     
       <!-- Portfolio Item 1 -->
       <!-- OnClick="location.href ='/MangoShop_1'"  -->
-      <!-- <div class="col-md-6 col-lg-4" data-toggle="modal" data-target="#inputCoder" > -->
-        <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto"  OnClick="location.href ='/MangoShop/input_coder'">
+      <div class="col-md-6 col-lg-4" data-toggle="modal" data-target="#inputCoder" >
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white" >
               Mango Shop
@@ -38,7 +46,7 @@
  
       <!-- Portfolio Item 6 -->
       <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto"  OnClick="location.href ='/ThirtyPuzzle/input_coder'">
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#inputCoder#ThirtyPuzzle">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white">
               Thirty Puzzle
@@ -50,7 +58,7 @@
       
       <!-- Portfolio Item 2 -->
       <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto"  OnClick="location.href ='/MissingNumber/input_coder'">
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#inputCoder3">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white">
               Missing Number
@@ -62,7 +70,7 @@
 
       <!-- Portfolio Item 3 -->
       <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto"  OnClick="location.href ='/PatternTrain/input_coder'">
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#inputCoder4">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white">
               Pattern Train
@@ -74,7 +82,7 @@
 
       <!-- Portfolio Item 4 -->
       <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto"  OnClick="location.href ='/EquationMaker/input_coder'">
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#inputCoder5">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white">
               Equation Maker
@@ -86,7 +94,7 @@
 
       <!-- Portfolio Item 5 -->
       <div class="col-md-6 col-lg-4">
-        <div class="portfolio-item mx-auto"  OnClick="location.href ='/FishTank/input_coder'">
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#inputCoder6">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white">
               Fish Tank
@@ -192,8 +200,7 @@
 </div>
 
 <!-- 코더 이름 입력하는 창 -->
-<div class="modal fade" id="inputCoder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div id="inputCoder2">
+<div class="modal fade" id="inputCoder thirtypuzzle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div  style="right:0px;  padding:0 0 0 0; text-align:right;">
     <button type="button" class="btn  btn-primary" data-dismiss="modal" id="close"> <i class="fas fa-times fa-fw"></i></button>
   </div>
@@ -212,7 +219,7 @@
         <input name="coder_id" class="form-control" id="name" type="text" placeholder="코더 이름" data-validation-required-message="Please enter your name."  style="border:none">
         <p class="help-block text-danger"></p>
       </div>        
-    </div>
+          
         <button class="btn btn-primary" id="submit" name="choice" value="{{screen.title}}"  style="height:4em; width:10em;">코딩하러 가기</button>
         <p></p>
 

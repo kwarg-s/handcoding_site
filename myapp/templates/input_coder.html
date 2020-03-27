@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section portfolio" id="portfolio" style="padding-top:150px;">
+    <div class="container">
+        
+          
+            <div class="modal-dialog" role="document" style="width:10px; padding:0 0 0 0; background-color:orange;"></div>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{game_name}}</h2>
+          
+              <div class="container" style="border:none">
+                <!-- Contact Section Form -->
+                <form action = "/{{game_name}}/submit_coder" method="post" class="gaming_form"  style="border:none"  style="border:none" >
+                  <!--poll이라는 함수에 id값을 url경로를 포함하여 전달, 추후 urls.py와 views.py에서 처리해야함-->
+                  {% csrf_token %}
+          
+                <div class="form-group floating-label-form-group controls mb-0 pb-2"  style="border:none" >
+                  <label>코더 이름 입력</label>
+                  <input name="coder_id" class="form-control" id="name" type="text" placeholder="코더 이름" data-validation-required-message="Please enter your name."  style="border:none">
+                  <p class="help-block text-danger"></p>
+                </div>        
+                    
+                  <button class="btn btn-primary" id="submit" name="choice" style="color:green;" value="{{screen.title}}"  style="height:4em; width:10em;">코딩하러 가기</button>
+                  <p></p>
+          
+              </form>
+              <center>
+              <button class="btn btn-primary"  style="color:green;"OnClick="location.href ='/'" style="height:4em; width:10em;">뒤로가기</button>
+            </center>   
+          
+          
+                </div>
+                
+          </div>
+
+</section>
+{% endblock %}

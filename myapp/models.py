@@ -28,6 +28,8 @@ class Result(models.Model):
     screen_id=models.CharField(max_length=200, default="none")
     gaming=models.IntegerField(default=-1)
     gaming_type=models.TextField(default="non gaming")
+    rapid_guessing=models.IntegerField(default=-1)
+    system_abuse=models.IntegerField(default=-1)
     result_time=models.CharField(max_length=200, default="0000")
 
     def __str__(self):
