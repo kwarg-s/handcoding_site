@@ -112,12 +112,30 @@ img {
     <h2 class="page-section-heading text-center text-uppercase text-white">{{screen_num}}</h2>
     <div class="container d-flex align-items-center flex-column" style="color:black;">      
       <!-- Contact Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{screen_num}}</h2>
-      <img src="{{ screen.pic.url }}"  >
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+        {{screen_num}}
+        <p></p>
+      </h2>
+      <h2 class="page-section-heading text-center text-secondary mb-0"  style='font-size:1.2em;'>
+
+      <br>
       
-    </div>
+      {% for answer in answer_log %}
+        {{answer}}<br>
+      {% endfor %}
+        Expected : {{screen.expected}}
+
+    </h2>
+      <!-- <img src="{{ screen.pic.url }}"  > -->
+      <p>
+      
+    </p>
+
+  </div>
 
 
+
+  
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
@@ -172,11 +190,11 @@ img {
 
           <!-- <p id="label-check-box"><strong>게이밍인 이유</strong></p> -->
           <p></p>
-          <div  id="gaming-check-box">
+          <!-- <div  id="gaming-check-box">
           
           <div class="custom-control custom-checkbox">
 						<input type="checkbox" name="rapid_guessing"  id="jb-checkbox-1" class="custom-control-input">
-            <label class="custom-control-label" for="jb-checkbox-1">빠른 속도 때문에 게이밍이다</label>
+            <label class="custom-control-label" for="jb-checkbox-1">ㅎㅎ빠른 속도 때문에 게이밍이다</label>
             
           </div>
           <div class="custom-control custom-checkbox">
@@ -185,7 +203,7 @@ img {
             
           </div>
 
-          </div>
+          </div> -->
           
           <p></p>
     

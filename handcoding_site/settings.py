@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'handcoding_site.wsgi.application'
 import platform
 p=platform.platform()
 
-if 'Windows' in p :
+if True:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

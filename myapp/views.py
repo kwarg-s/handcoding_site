@@ -20,7 +20,8 @@ def submit_coder(request,game_name):
     post=request.POST
     coder_id=post['coder_id']
     coder_id=coder_id+'_'+game_name
-    print(post)
+    print('game_name',game_name)
+    #print(post)
     try:
       coder=get_object_or_404(Coder,pk=coder_id)
       screen_id=coder.recent_screen_id.split('_')[1]
@@ -49,12 +50,133 @@ def detail(request,screen_id,coder_id):
     game_name,screen_num=screen_id.split("_")[0],int(screen_id.split("_")[1])
     next_screen_id=game_name+'_'+str(screen_num+1)
     before_screen_id=game_name+'_'+str(screen_num-1)
-    print(next_screen_id)
-    print(before_screen_id)
+    
 
+    answer_log=screen_detail.answer_log
+    time_log=screen_detail.time_log
+    actions=screen_detail.actions
+
+    print('screen_detail',screen_detail)
+
+    if screen_detail.game_name in ['ThirtyPuzzle']:
+      answer_log=answer_log[1:-1]
+      answer_log=answer_log.split(",") 
+      time_log=time_log[1:-1]
+      time_log=time_log.split(",")
+      answer_log=list(zip(answer_log,time_log))
+
+    if screen_detail.game_name in ['FishTank']:
+      answer_log=answer_log[1:-1]
+      answer_log=answer_log.split("), (") 
+
+      time_log=time_log[1:-1]
+      time_log=time_log.split(",")
+
+      #answer_log=list(zip(answer_log,time_log))
+
+      expected_log=screen_detail.expected.split(',')
+
+      answer_log=["%s, %s"%(answer_log[i],expected_log[i])\
+                   for i in range(len(answer_log))]
+
+      
+      answer_log=["%s (%s)"%(answer_log[i][1:],time_log[i])\
+                  for i in range(len(answer_log))]
+      
+
+
+
+
+    if screen_detail.game_name in ['NumberTrain','PatternTrain']:
+      answer_log=answer_log[1:-1]
+      answer_log=answer_log.split("),")
+
+      time_log=time_log[1:-1]
+      time_log=time_log.split(",")
+
+      answer_log=list(zip(answer_log,time_log))
+
+      print('answer_log',answer_log)
+
+      actions=actions[1:-1]
+      actions=actions.split(",")
+
+      print('actions',actions)
+
+      j=0
+      answer_log_new=[]
+      for i in range(len(actions)):
+        if "Answer" not in actions[i]:
+          answer_log_new.append(actions[i])
+        else:
+          answer_log_new.append(answer_log[j][0]+"  ("+answer_log[j][1]+")")
+          j+=1
+
+      answer_log=answer_log_new
+
+    if screen_detail.game_name in ["MissingNumber"]:
+      
+      print('ssss')
+      answer_log=answer_log[1:-1]
+      answer_log=answer_log.split("),")
+
+      time_log=time_log[1:-1]
+      time_log=time_log.split(",")
+
+      print('eee',answer_log,time_log)
+      
+
+      answer_log=list(zip(answer_log,time_log))
+
+      print('answer_log',answer_log)
+
+      actions=actions[1:-1]
+      actions=actions.split(",")
+
+      print('actions',actions)
+
+      j=0
+      answer_log_new=[]
+      for i in range(len(actions)):
+        if "Answer" not in actions[i]:
+          answer_log_new.append(actions[i])
+        else:
+          answer_log_new.append(answer_log[j][0]+"  ("+answer_log[j][1]+")")
+          j+=1
+
+      answer_log=answer_log_new
+
+    if screen_detail.game_name in ["MangoShop"]:
+      answer_log=answer_log[1:-1]
+      answer_log=answer_log.split(",")
+      
+
+      time_log=time_log[1:-1]
+      time_log=time_log.split(",")
+      
+      answer_log=list(zip(answer_log,time_log))
+
+      actions=actions[1:-1]
+      actions=actions.split(",")
+
+      j=0
+      answer_log_new=[]
+      for i in range(len(actions)):
+        if "Answer" not in actions[i]:
+          answer_log_new.append(actions[i])
+        else:
+          answer_log_new.append(answer_log[j][0]+"  ("+answer_log[j][1]+")")
+          j+=1
+
+      answer_log=answer_log_new
+
+      #answer_log=screen_detail.answer_log.split("],")
+      #answer_log=["".join([c for c in list(s) if c not in [']','[']]) for s in  answer_log]
+      pass
     
     return render(request,'new.html',{'screen':screen_detail,'screen_num':screen_id,\
       'coder_id':coder_id,
+      'answer_log':answer_log,
       'next_screen_id':next_screen_id,'before_screen_id':before_screen_id})
   except Exception as e:
     print('111오류메시지시작')
@@ -101,7 +223,11 @@ def update(request,screen_id,coder_id):
 
     screen_id_to_update=screen_id.split('_')[0]+'_'+str(int(screen_id.split('_')[1])-1)
     result_time=time.ctime()
-    result=Result(screen_id=screen_id_to_update,gaming=gaming,gaming_type="",result_time=result_time,coder_id=coder_id,rapid_guessing=rg,system_abuse=sa)
+
+    result=Result(coder_id=coder_id,screen_id=screen_id_to_update,
+    result_time=result_time,
+    gaming=gaming,
+      )
     result.save()
     coder=get_object_or_404(Coder,pk=coder_id)
     coder.recent_screen_id=screen_id_to_update

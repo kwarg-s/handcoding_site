@@ -8,29 +8,45 @@ class Screen(models.Model):
     # screen_num=models.IntegerField
     
     user=models.CharField(max_length=200, default="none")
-    day_problem=models.CharField(max_length=200, default="none")
-    day=models.CharField(max_length=200, default="none")
-    problem=models.CharField(max_length=200, default="none")
-    time=models.FloatField(null=True, blank=True, default=0.0)
-    pic=models.ImageField(upload_to="image")
+    problem_id=models.CharField(max_length=200, default="none")
+    expected=models.CharField(max_length=200, default="none")
     game_name=models.CharField(max_length=200,default="MangoShop")
-
     
+    #newly added
+    answer_log=models.CharField(max_length=1000, default="none")
+    time_log=models.CharField(max_length=1000, default="none")
+    actions=models.CharField(max_length=1000, default="none")
+
+    #old
+    # day_problem=models.CharField(max_length=200, default="none")
+    # day=models.CharField(max_length=200, default="none")
+    # problem=models.CharField(max_length=200, default="none")
+    # time=models.FloatField(null=True, blank=True, default=0.0)
+    # pic=models.ImageField(upload_to="image")
 
     def __str__(self):
         return self.screen_id
 
 class Result(models.Model):
+    
+    #id정보
     result_id = models.AutoField(primary_key=True)
-
     coder_id=models.CharField(max_length=200, default="kmz")
-    game_name=models.CharField(max_length=200,default="MangoShop")
     screen_id=models.CharField(max_length=200, default="none")
+    #problem_id=models.CharField(max_length=200, default="none")
+
+    #timestamp
+    result_time=models.CharField(max_length=200, default="0000")#timestamp
+
+    #주요정보
+    game_name=models.CharField(max_length=200,default="MangoShop")
     gaming=models.IntegerField(default=-1)
     gaming_type=models.TextField(default="non gaming")
-    rapid_guessing=models.IntegerField(default=-1)
-    system_abuse=models.IntegerField(default=-1)
-    result_time=models.CharField(max_length=200, default="0000")
+
+    #old
+    #rapid_guessing=models.IntegerField(default=-1)
+    #system_abuse=models.IntegerField(default=-1)
+    
 
     def __str__(self):
         return str(self.screen_id)
